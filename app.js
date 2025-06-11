@@ -3,6 +3,16 @@ function sortear(){
     let de = parseInt(document.getElementById('de').value);
     let ate = parseInt(document.getElementById('ate').value);
 
+    if (de >= ate) {
+        alert('O valor "de" deve ser menor que o valor "até".');
+        return;
+    }
+
+    if (quantidade <= 0 || quantidade > (ate - de + 1)) {
+        alert('A quantidade de números sorteados deve ser maior que 0 e menor ou igual à diferença entre "até" e "de".');
+        return;
+    }
+
     let sorteados = [];
     let numero;
     
@@ -19,7 +29,7 @@ function sortear(){
     let resultado = document.getElementById('resultado');
     resultado.innerHTML = `<label class="texto__paragrafo">Números sorteados:  ${sorteados}</label>`;
 
-    alterarStatusBotao(true); // Habilita o botão ao sortear
+    alterarStatusBotao(true);
 }
 
 function obterNumeroAleatorio(min, max) {
@@ -42,5 +52,5 @@ function reiniciar() {
     document.getElementById('de').value = '';
     document.getElementById('ate').value = '';
     document.getElementById('resultado').innerHTML = '<label class="texto__paragrafo">Números sorteados:  nenhum até agora</label>';
-    alterarStatusBotao(false); // Desabilita o botão ao reiniciar
+    alterarStatusBotao(false);
 }
